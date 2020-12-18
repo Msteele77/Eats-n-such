@@ -13,12 +13,13 @@
 
 
     <header>
-        <h1>EATS N SUCH NEAR YOU</h1>
-        <!--Navigation Section-->
-        <nav>
+        
+        <!--Navigation Section (materialize)-->
+        <nav class="div-wrapper">
+            <a href="#" class="header-1">EATS N SUCH NEAR YOU</a>
 
             <!--NAV links are only placeholders for now-->
-            <ul>
+            <ul id="nav-mobile" class="right">
                 <li>
                     <a href="#about-us-section">ABOUT</a>
                 </li>
@@ -32,20 +33,52 @@
                     <a href="#reviews-section">REVIEWS</a>
                 </li>
             </ul>
-
+        </div>
         </nav>
     </header>
 
     <!--Hero section-->
 
     <section class="hero">
-        <div class="search-form">
-            <h3>SEARCH FOR RESTAURANTS & BREWERIES NEAR YOU</h3>
-        <form>
+        <div class="row">
             
+            <!--search section-->
+            <div class="col s12 m6 l5">
+                <div class="search-form z-depth-4 center-align">
+                    <h3 class="center-align">SEARCH FOR RESTAURANTS & BREWERIES NEAR YOU</h3>
 
-        </form>
+                    <div class="input-field">
+                        <input placeholder="Type Here..." id="city-search" type="text">
+                        <label for="city-search">Search By City</label>
+                    </div>
 
+                      
+                    <form action="#">
+                        <h6>Mark All That Apply:</h6>
+                        <label>
+                            <input type="checkbox"/>
+                            <span>Restaurants</span>
+                        </label>
+                        <label>
+                            <input type="checkbox"/>
+                            <span>Breweries</span>
+                        </label>
+                    </form>
+
+                    
+                    <button class="btn waves-effect waves-light" type="submit" name="search-button">Submit
+                        
+                    </button>
+
+                </div>
+            </div>
+
+               
+            <!--results section-->
+            <div class="col s12 m6 l7 results-section">
+                <h4>Results</h4>
+                
+            </div>
 
         </div>
     </section>
