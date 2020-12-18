@@ -9,38 +9,59 @@ body {
 }
 
 header {
-    
     background-color: black;
-    
+    position: relative;
 }
 
-header h1 {
+.header-1 {
     font-weight: bold;
     font-size: 36px;
     color: #D58342; 
-    margin: 0;
     display: inline;
+    padding: 10px 10px 0px;
+    position: absolute;
+    bottom: 0;
 }
 
-header a {
-    text-decoration: none;
+header nav ul li a {
+    margin: 0 12px;
+    font-size: 20px;
     color: white;
-    float: right;
-
 }
 
 header nav {
     background-color: black;
+    height: 160px;
 }
 
+
 .hero h3 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
+    color: white;
 }
 
 .hero {
     background-image: url("../images/hero-image.jpg");
     background-size: cover;
-    height: 600px;
+    height: 800px;
 }
 
+.search-form {
+    background-color: black;
+    border: 3px solid grey;
+    width: 400px;
+}
+
+h6 {
+    color: white;
+}
+
+.results-section {
+    background-color: black;
+    border: 3px solid grey;
+}
+
+.results-section h4 {
+    color: white;
+}
