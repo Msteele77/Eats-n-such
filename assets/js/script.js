@@ -15,6 +15,7 @@ var getBreweries = function() {
         response.json()
         .then(function(data) {
             breweries = data
+            console.log(breweries);
         })
     })
 }
@@ -26,6 +27,7 @@ var getRestaurants = function() {
         response.json()
         .then(function(data) {
             restaurants = data.restaurants
+            console.log(restaurants);
         })
     })
 }
@@ -39,17 +41,21 @@ var successCallback = function(position) {
         response.json()
         .then(function(data) {
             city = data.results[0].components.town;
+            console.log(city);
         })
     })
 }
 
 //function if location permission was not given
 var errorCallback = function(error) {
-    console.log(error);
+    console.log("Location access was denied.");
 }
 
 //ask to get users location
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+setTimeout(function() {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+}, 2000);
+
 
 
 
