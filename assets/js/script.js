@@ -48,10 +48,21 @@ var successCallback = function(position) {
 
 //function if location permission was not given
 var errorCallback = function(error) {
+    console.log(error);
     console.log("Location access was denied.");
 }
 
-//ask to get users location
+//function to handle search bar
+var searchHandler = function() {
+
+}
+
+//function to handle displaying search results
+var displaySearchedHandler = function() {
+
+}
+
+//ask to get users location after two seconds
 setTimeout(function() {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 }, 2000);

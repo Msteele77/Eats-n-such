@@ -10,27 +10,28 @@ body {
 
 header {
     background-color: black;
+    position: relative;
 }
 
-header h1 {
+.header-1 {
     font-weight: bold;
     font-size: 36px;
     color: #D58342; 
-    margin: 0;
     display: inline;
-    
+    padding: 10px 10px 0px;
+    position: absolute;
+    bottom: 0;
 }
 
 header nav ul li a {
     margin: 0 12px;
-    font-weight: ligher;
     font-size: 20px;
     color: white;
-    float: right;
 }
 
 header nav {
     background-color: black;
+    height: 160px;
 }
 
 
@@ -46,3 +47,21 @@ header nav {
     height: 800px;
 }
 
+.search-form {
+    background-color: black;
+    border: 3px solid grey;
+    width: 400px;
+}
+
+h6 {
+    color: white;
+}
+
+.results-section {
+    background-color: black;
+    border: 3px solid grey;
+}
+
+.results-section h4 {
+    color: white;
+}
