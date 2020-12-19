@@ -3,6 +3,9 @@ var long ="";
 var city = "";
 var breweries = [];
 var restaurants = [];
+var searchInput = document.querySelector("#city-search");
+var searchButton = document.querySelector("#search-button");
+var resultsArea = document.querySelector("#results-section");
 
 
 
@@ -42,6 +45,7 @@ var successCallback = function(position) {
         .then(function(data) {
             city = data.results[0].components.town;
             console.log(city);
+            searchInput.value += city;
         })
     })
 }
@@ -54,22 +58,39 @@ var errorCallback = function(error) {
 
 //function to handle search bar
 var searchHandler = function() {
-
+    city = searchInput.value
+    if (document.querySelector("#restaurant-checkbox").checked) {
+        getRestaurants();
+        displayRestaurantHandler();
+    }
+    if (document.querySelector("#brewery-checkbox").checked) {
+        getBreweries();
+        displayBreweryHandler();
+    } else if (!(document.querySelector("#restaurant-checkbox").checked) && !(document.querySelector("#brewery-checkbox").checked)) {
+        M.toast({html: 'Please select at least one option!', classes: 'rounded'})
+    };
 }
 
 //function to handle displaying search results
-var displaySearchedHandler = function() {
-
+var displayRestaurantHandler = function() {
+    console.log('worked')
+    var restaurantList = document.createElement("ul");
+    var restaurantsTag = document.createElement("h5");
+    restaurantsTag.textContent = "Restaurants Near You: "
+    resultsArea.append(restaurantsTag);
 }
 
-//ask to get users location after two seconds
-setTimeout(function() {
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-}, 2000);
+var displayBreweryHandler = function() {
+    console.log('also worked')
+    var breweryList = document.createElement("ul");
+    var breweryTag = document.createElement("h5");
+    breweryTag.textContent = "Breweries Near You: "
+    resultsArea.append(breweryTag);
+}
 
 
 
+//ask to get users location
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-//getRestaurants();
-//getBreweries();
-//getLocation()
+searchButton.addEventListener("click", searchHandler);
