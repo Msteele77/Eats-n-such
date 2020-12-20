@@ -4,6 +4,10 @@
     box-sizing: border-box;
   }
 
+.hidden {
+    visibility: hidden;
+}
+
 body {
 
 }
@@ -69,4 +73,11 @@ h6 {
 
 .results-section h4 {
     color: white;
+}
+
+.list-item {
+    display: block;
+    background-color: rgb(255, 255, 255, .7);
+    color: black;
+    margin: 5px 0 5px 0;
 }
