@@ -18,7 +18,6 @@ var getBreweries = function() {
         response.json()
         .then(function(data) {
             breweries = data
-            console.log(breweries);
         })
         .then(function() {
             setTimeout(displayBreweryHandler(), 2000);
@@ -44,15 +43,14 @@ var getRestaurants = function() {
                 response.json()
                 .then(function(data) {
                     restaurants = data.restaurants
-                    console.log(restaurants);
                 })
                 .then(function() {
-                    setTimeout(displayRestaurantHandler(), 2000);
+                    setTimeout(displayRestaurantHandler(), 1000);
                 })
             })
         })
     })
-}
+};
 
 //function if location permission was given, gets users city
 var successCallback = function(position) {
@@ -63,65 +61,93 @@ var successCallback = function(position) {
         response.json()
         .then(function(data) {
             city = data.results[0].components.town;
-            console.log(city);
             searchInput.value += city;
         })
     })
-}
+};
 
 //function if location permission was not given
 var errorCallback = function(error) {
     console.log(error);
     console.log("Location access was denied.");
-}
+};
 
 //function to handle search bar
 var searchHandler = function() {
-    resultsArea.classList.remove("hidden");
     city = searchInput.value
+    if ( city == "") {
+        M.toast({html: 'Looks like you forgot to enter a location.'})
+    }
     if (document.querySelector("#restaurant-checkbox").checked) {
+        resultsArea.classList.remove("hidden");
+        var breweryContainer = document.querySelector("#brewery-container");
+        breweryContainer.setAttribute("class", "hidden");
         getRestaurants();
-        displayRestaurantHandler();
     }
     if (document.querySelector("#brewery-checkbox").checked) {
+        resultsArea.classList.remove("hidden");
+        var restaurantContainer = document.querySelector("#restaurant-container");
+        restaurantContainer.setAttribute("class", "hidden");
         getBreweries();
     } else if (!(document.querySelector("#restaurant-checkbox").checked) && !(document.querySelector("#brewery-checkbox").checked)) {
         M.toast({html: 'Please select at least one option!', classes: 'rounded'})
     };
-}
+};
 
 //function to handle displaying search results
 var displayRestaurantHandler = function() {
-    console.log('worked')
+    var restaurantContainer = document.querySelector("#restaurant-container");
+    restaurantContainer.classList.remove("hidden");
     var currentRestaurantList = document.querySelector("#restaurant-list");
-    var newRestaurantsList = document.createElement("ul");
-    newRestaurantsList.setAttribute("id", "restaurant-list");
-    currentRestaurantList.replaceWith(newRestaurantsList);
-    console.log(restaurants.length);
 
-    for (i = 0; i < restaurants.length; i++) {
-        var restaurantItem = document.createElement("a");
-        restaurantItem.setAttribute("class", "list-item");
-        restaurantItem.textContent = restaurants[i].restaurant.name;
-        newRestaurantsList.appendChild(restaurantItem);
+    if (restaurants.length === 0) {
+        var noResults = document.createElement("p");
+        noResults.setAttribute("id", "restaurant-list");
+        noResults.setAttribute("class", "no-results-alert")
+        noResults.textContent = "Sorry, no restaurants found near that location."
+        currentRestaurantList.replaceWith(noResults);
     }
-}
+    else {
+        var newRestaurantsList = document.createElement("ul");
+        newRestaurantsList.setAttribute("id", "restaurant-list");
+        currentRestaurantList.replaceWith(newRestaurantsList);
+    
+        for (i = 0; i < restaurants.length; i++) {
+            var restaurantItem = document.createElement("a");
+            restaurantItem.setAttribute("class", "list-item");
+            restaurantItem.textContent = restaurants[i].restaurant.name;
+            newRestaurantsList.appendChild(restaurantItem);
+        };
+    };
+};
 
 var displayBreweryHandler = function() {
-    console.log('also worked')
-    var currentBreweryList = document.querySelector("#brewery-list")
-    var newBreweryList = document.createElement("ul");
-    newBreweryList.setAttribute("id", "brewery-list");
-    currentBreweryList.replaceWith(newBreweryList);
-    console.log(breweries.length)
+    var breweryContainer = document.querySelector("#brewery-container");
+    breweryContainer.classList.remove("hidden");
+    var currentBreweryList = document.querySelector("#brewery-list");
 
-    for (i = 0; i < breweries.length; i++) {
-        var breweryItem = document.createElement("a");
-        breweryItem.setAttribute("class", "list-item");
-        breweryItem.textContent = breweries[i].name;
-        newBreweryList.appendChild(breweryItem);
+    if (breweries.length === 0) {
+        var noResults = document.createElement("p");
+        noResults.setAttribute("id", "brewery-list");
+        noResults.setAttribute("class", "no-results-alert")
+        noResults.textContent = "Sorry, no breweries found near that location."
+        currentBreweryList.replaceWith(noResults);
     }
-}
+    else {
+        var newBreweryList = document.createElement("ul");
+        newBreweryList.setAttribute("id", "brewery-list");
+        currentBreweryList.replaceWith(newBreweryList);
+    
+        for (i = 0; i < breweries.length; i++) {
+            var breweryItem = document.createElement("a");
+            breweryItem.setAttribute("class", "list-item");
+            breweryItem.textContent = breweries[i].name;
+            newBreweryList.appendChild(breweryItem);
+        };
+    };
+};
+
+
 
 
 
