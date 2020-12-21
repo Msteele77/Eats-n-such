@@ -4,6 +4,10 @@
     box-sizing: border-box;
   }
 
+.hidden {
+    visibility: hidden;
+}
+
 body {
 
 }
@@ -48,9 +52,13 @@ header nav {
 }
 
 .search-form {
-    background-color: black;
+    background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
     width: 400px;
+}
+
+.input-field {
+    background-color: white;
 }
 
 h6 {
@@ -58,10 +66,18 @@ h6 {
 }
 
 .results-section {
-    background-color: black;
+    background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
+    color: white;
 }
 
 .results-section h4 {
     color: white;
+}
+
+.list-item {
+    display: block;
+    background-color: rgb(255, 255, 255, .7);
+    color: black;
+    margin: 5px 0 5px 0;
 }

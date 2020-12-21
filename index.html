@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <title>Eats 'n Such</title>
 </head>
@@ -54,20 +53,20 @@
                     </div>
 
                       
-                    <form action="#">
+                    <form>
                         <h6>Mark All That Apply:</h6>
                         <label>
-                            <input type="checkbox"/>
+                            <input id="restaurant-checkbox" type="checkbox"/>
                             <span>Restaurants</span>
                         </label>
                         <label>
-                            <input type="checkbox"/>
+                            <input id="brewery-checkbox" type="checkbox"/>
                             <span>Breweries</span>
                         </label>
                     </form>
 
                     
-                    <button class="btn waves-effect waves-light" type="submit" name="search-button">Submit
+                    <button id="search-button" class="btn waves-effect waves-light" type="submit" name="search-button">Submit
                         
                     </button>
 
@@ -76,8 +75,21 @@
 
                
             <!--results section-->
-            <div class="col s12 m6 l7 results-section">
+            <div id="results-section" class="hidden col s12 m6 l7 results-section">
                 <h4>Results</h4>
+                <div id="restaurant-container">
+                    <h5>Restaurants Near You:</h5>
+                    <ul id="restaurant-list">
+
+                    </ul>
+                </div>
+
+                <div id="brewery-container">
+                    <h5>Breweries Near You:</h5>
+                    <ul id="brewery-list">
+
+                    </ul>
+                </div>
                 
             </div>
 
