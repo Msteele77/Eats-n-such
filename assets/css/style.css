@@ -65,13 +65,18 @@ header nav {
 button {
     margin: 12px;
     font-weight: bold;
+    width: 160px;
 }
 
-#restaurant-button {
-
+.h6 {
+    font-weight: bold;
 }
 
-#brewery-button {
+#restaurant-checkbox {
+    
+}
+
+#brewery-checkbox {
     
 }
 
@@ -81,11 +86,12 @@ button {
     color: white;
     font-weight: 400px;   
     text-transform: uppercase;
-   line-height: 10px;
+    line-height: 10px;
 }
 
 .input-field {
     background-color: white;
+    
 }
 
 
@@ -98,10 +104,14 @@ h6 {
     background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
     color: white;
+    position: relative;
+    top: 32px;
+
 }
 
 .results-section h4 {
     color: white;
+    text-transform: uppercase;
 }
 
 .list-item {
