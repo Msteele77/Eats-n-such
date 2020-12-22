@@ -40,7 +40,7 @@ header nav {
 
 
 .hero h3 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     color: white;
 }
@@ -48,31 +48,70 @@ header nav {
 .hero {
     background-image: url("../images/hero-image.jpg");
     background-size: cover;
-    height: 800px;
+    height: 1000px;
 }
 
 .search-form {
     background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
-    width: 400px;
+    width: 450px;
+    height: 500px;
+    position: absolute;
+    top: 200px;
+    left: 40px;
+}
+
+
+button {
+    margin: 12px;
+    font-weight: bold;
+    width: 160px;
+}
+
+.h6 {
+    font-weight: bold;
+}
+
+#restaurant-checkbox {
+    
+}
+
+#brewery-checkbox {
+    
+}
+
+.input-field>label {
+    font-size: 20px;
+    align-items: center;
+    color: white;
+    font-weight: 400px;   
+    text-transform: uppercase;
+    line-height: 10px;
 }
 
 .input-field {
     background-color: white;
+    
 }
+
 
 h6 {
     color: white;
+    text-transform: uppercase;
 }
 
 .results-section {
     background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
     color: white;
+    position: relative;
+    top: 32px;
+
 }
 
 .results-section h4 {
     color: white;
+    text-transform: uppercase;
 }
 
 .list-item {
@@ -82,6 +121,5 @@ h6 {
     margin: 5px 0 5px 0;
 }
 
-.no-results-alert {
-    margin: 5px 0 5px 0;
-}
+
+
