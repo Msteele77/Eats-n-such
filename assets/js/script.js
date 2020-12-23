@@ -20,7 +20,7 @@ var getBreweries = function() {
             breweries = data
         })
         .then(function() {
-            setTimeout(displayBreweryHandler(), 2000);
+            setTimeout(displayBreweryHandler(), 1000);
         })
     })
     
@@ -41,18 +41,19 @@ var getRestaurants = function() {
             fetch("https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + long + "&apikey=510b377da1e68430bb8e2db41707b969")
             .then(function(response) {
                 response.json()
+                
                 .then(function(data) {
                     restaurants = data.restaurants
                 })
                 .then(function() {
-                    setTimeout(displayRestaurantHandler(), 1000);
+                    setTimeout(displayRestaurantHandler(), 0);
                 })
             })
         })
     })
 };
 
-//function if location permission was given, gets users city
+//function if location permission was given, gets users city, pastes it in textarea
 var successCallback = function(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
@@ -60,23 +61,43 @@ var successCallback = function(position) {
     .then(function(response) {
         response.json()
         .then(function(data) {
-            city = data.results[0].components.town;
+            console.log(data);
+            city = data.results[0].components.city;
+            if (city === undefined) {
+                city = data.results[0].components.town;
+            }
             searchInput.value += city;
         })
     })
 };
 
-//function if location permission was not given
+//function if location permission was not given. This really only exists because geolocation requires 2 parameters
 var errorCallback = function(error) {
     console.log(error);
     console.log("Location access was denied.");
 };
 
-//function to handle search bar
+//function to handle search bar and checkbox selection
 var searchHandler = function() {
     city = searchInput.value
-    if ( city == "") {
-        M.toast({html: 'Looks like you forgot to enter a location.'})
+    var pastList = localStorage.getItem("searched");
+    if (pastList) {
+        var searchArray = pastList.split(",");
+        if (searchArray.length > 4) {
+            searchArray.shift();
+            searchArray.push(city.toLowerCase());
+            localStorage.setItem("searched", searchArray);
+        }
+        else {
+            searchArray.push(city.toLowerCase());
+            localStorage.setItem("searched", searchArray);
+        };
+    }
+    else {
+        localStorage.setItem("searched", city.toLowerCase());
+    }
+    if (!(city)) {
+        M.toast({html: 'Looks like you forgot to enter a location.', classes: 'rounded'})
     }
     if (document.querySelector("#restaurant-checkbox").checked) {
         resultsArea.classList.remove("hidden");
@@ -94,7 +115,7 @@ var searchHandler = function() {
     };
 };
 
-//function to handle displaying search results
+//function to handle displaying restaurant search results 
 var displayRestaurantHandler = function() {
     var restaurantContainer = document.querySelector("#restaurant-container");
     restaurantContainer.classList.remove("hidden");
@@ -121,6 +142,7 @@ var displayRestaurantHandler = function() {
     };
 };
 
+//function to handle displaying brewery search results
 var displayBreweryHandler = function() {
     var breweryContainer = document.querySelector("#brewery-container");
     breweryContainer.classList.remove("hidden");
@@ -147,11 +169,29 @@ var displayBreweryHandler = function() {
     };
 };
 
+//create past searches list
+var pastSearches = function() {
+    var pastListString = localStorage.getItem("searched");
+    var pastList = pastListString.split(",")
+    console.log(pastList)
+    if ((pastList)) {
+        var newSearchListArea = document.createElement("ul");
+        newSearchListArea.setAttribute("id", "past-searches");
 
-
+        for (i = 0; i < pastList.length; i++) {
+            var searchListItem = document.createElement("a");
+            searchListItem.setAttribute("class", "past-search-item");
+            searchListItem.textContent = pastList[i];
+            newSearchListArea.append(searchListItem);
+        }
+        var oldSearchListArea = document.querySelector("#past-searches");
+        oldSearchListArea.replaceWith(newSearchListArea);
+    }
+}
 
 
 //ask to get users location
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
 searchButton.addEventListener("click", searchHandler);
+searchInput.addEventListener("click", pastSearches);
