@@ -5,7 +5,7 @@
   }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 body {
@@ -31,6 +31,10 @@ header nav ul li a {
     margin: 0 12px;
     font-size: 20px;
     color: white;
+}
+
+header nav ul li a:hover {
+    color: #D58342
 }
 
 header nav {
@@ -91,6 +95,9 @@ button {
 
 .input-field {
     background-color: white;
+    margin: 0;
+    border: none;
+
     
 }
 
@@ -119,7 +126,27 @@ h6 {
     background-color: rgb(255, 255, 255, .7);
     color: black;
     margin: 5px 0 5px 0;
+    font-size: large;
 }
 
+.past-search-item {
+    display: block;
+    background-color: rgb(255, 255, 255, .7);
+    color: black;
+    margin: 5px 0 5px 0;
+}
 
+.past-search-item:hover {
+    background-color: rgba(213, 131, 66, .7);
+}
 
+#past-searches a:hover {
+    cursor: pointer;
+}
+
+.h-scrollbar div {
+    width: 1000px;
+    display:block;
+    visibility: hidden;
+    height:0px
+}
