@@ -83,26 +83,27 @@ var storageHandler = function() {
     var pastList = localStorage.getItem("searched");
     if (pastList) {
         var searchArray = pastList.split(",");
-        for (i = 0; i < searchArray.length; i++) {
-            if (city.toLowerCase === searchArray[i]) {
-                searchHandler();
+        if (!(searchArray.includes(city.toLowerCase()))) {
+            console.log('yes');
+             if (searchArray.length > 4) {
+                searchArray.shift();
+                searchArray.push(city.toLowerCase());
+                localStorage.setItem("searched", searchArray);
+                searchHandler()
             }
-        };
-        if (searchArray.length > 4) {
-            searchArray.shift();
-            searchArray.push(city.toLowerCase());
-            localStorage.setItem("searched", searchArray);
-            searchHandler()
+            else {
+                searchArray.push(city.toLowerCase());
+                localStorage.setItem("searched", searchArray);
+                searchHandler()
+            };
         }
         else {
-            searchArray.push(city.toLowerCase());
-            localStorage.setItem("searched", searchArray);
-            searchHandler()
-        };
+            searchHandler();
+        }
     }
     else {
-        localStorage.setItem("searched", city.toLowerCase());
-        searchHandler()
+         localStorage.setItem("searched", city.toLowerCase());
+         searchHandler()
     };
 };
 

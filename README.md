@@ -4,7 +4,7 @@
 
 -This application allows the user to search based off their current location, or by entering a chosen location, and gives the option to see breweries, restaurants or both in the area chosen. The last five searched cities will appear below the search bar.
 
-**The Process**
+**The Process:**
 
 - A mockup and user story was created to showcase our desired functionality, purpose and design. The remote repository, initial starting files and the HTML skeleton were created to get the project started. 
 
