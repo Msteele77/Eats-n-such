@@ -137,5 +137,7 @@ h6 {
     background-color: rgba(213, 131, 66, .7);
 }
 
-
+#past-searches a:hover {
+    cursor: pointer;
+}
 

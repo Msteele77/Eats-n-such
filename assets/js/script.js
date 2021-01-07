@@ -6,6 +6,7 @@ var restaurants = [];
 var searchInput = document.querySelector("#city-search");
 var searchButton = document.querySelector("#search-button");
 var resultsArea = document.querySelector("#results-section");
+var pastSearchItemArea = document.querySelector("#past-searches");
 
 
 
@@ -76,25 +77,36 @@ var errorCallback = function(error) {
     console.log("Location access was denied.");
 };
 
-//function to handle search bar and checkbox selection
-var searchHandler = function() {
+var storageHandler = function() {  
     city = searchInput.value
     var pastList = localStorage.getItem("searched");
     if (pastList) {
         var searchArray = pastList.split(",");
-        if (searchArray.length > 4) {
-            searchArray.shift();
-            searchArray.push(city.toLowerCase());
-            localStorage.setItem("searched", searchArray);
+        if (!(searchArray.includes(city.toLowerCase()))) {
+             if (searchArray.length > 4) {
+                searchArray.shift();
+                searchArray.push(city.toLowerCase());
+                localStorage.setItem("searched", searchArray);
+                searchHandler()
+            }
+            else {
+                searchArray.push(city.toLowerCase());
+                localStorage.setItem("searched", searchArray);
+                searchHandler()
+            };
         }
         else {
-            searchArray.push(city.toLowerCase());
-            localStorage.setItem("searched", searchArray);
-        };
+            searchHandler();
+        }
     }
     else {
-        localStorage.setItem("searched", city.toLowerCase());
-    }
+         localStorage.setItem("searched", city.toLowerCase());
+         searchHandler()
+    };
+};
+
+//function to handle search bar and checkbox selection
+var searchHandler = function() {
     if (!(city)) {
         M.toast({html: 'Looks like you forgot to enter a location.', classes: 'rounded'})
     }
@@ -184,12 +196,19 @@ var pastSearches = function() {
         }
         var oldSearchListArea = document.querySelector("#past-searches");
         oldSearchListArea.replaceWith(newSearchListArea);
-    }
-}
+        pastSearchItemArea.classList.remove("hidden");
+    };
+};
 
 
 //ask to get users location
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-searchButton.addEventListener("click", searchHandler);
+searchButton.addEventListener("click", storageHandler);
 searchInput.addEventListener("click", pastSearches);
+document.addEventListener("click", function(event) {
+    if ( event.target.closest(".past-search-item")) {
+        var clickedItemText = event.toElement.innerText;
+        searchInput.value = clickedItemText;
+    }
+});
