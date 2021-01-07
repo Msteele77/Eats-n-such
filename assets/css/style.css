@@ -18,15 +18,12 @@ header {
     position: relative;
 }
 
-/* .header-1 {
+.header-1 {
     font-weight: bold;
     font-size: 36px;
     color: #D58342; 
-    display: inline;
-    padding: 10px 10px 0px;
-    position: absolute;
-    bottom: 0;
-} */
+  
+} 
 
 .nav-title {
     font-weight: bold;
@@ -114,8 +111,6 @@ h6 {
     background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
     color: white;
-    /* position: relative; */
-
 }
 
 .results-section h4 {
@@ -142,5 +137,7 @@ h6 {
     background-color: rgba(213, 131, 66, .7);
 }
 
-
+#past-searches a:hover {
+    cursor: pointer;
+}
 

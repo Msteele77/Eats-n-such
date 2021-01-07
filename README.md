@@ -23,4 +23,8 @@
 
 ### Application Preview:
 
-(Need to add a screenshot of completed styling of app)
+![image](https://user-images.githubusercontent.com/72512687/103922290-c5fc5480-50d0-11eb-8825-334a95427fc6.png)
+
+### Example of successful search:
+
+![image](https://user-images.githubusercontent.com/72512687/103923296-2b9d1080-50d2-11eb-9d2f-c297aa676c6c.png)
