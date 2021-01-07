@@ -61,7 +61,6 @@ var successCallback = function(position) {
     .then(function(response) {
         response.json()
         .then(function(data) {
-            console.log(data);
             city = data.results[0].components.city;
             if (city === undefined) {
                 city = data.results[0].components.town;
@@ -173,7 +172,6 @@ var displayBreweryHandler = function() {
 var pastSearches = function() {
     var pastListString = localStorage.getItem("searched");
     var pastList = pastListString.split(",")
-    console.log(pastList)
     if ((pastList)) {
         var newSearchListArea = document.createElement("ul");
         newSearchListArea.setAttribute("id", "past-searches");
