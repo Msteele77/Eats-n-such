@@ -1,19 +1,26 @@
 # Eats-n-such
 
-## - This is a group based project made with Kyle Condie, Macheya Steele, and Jason Adams.
+## This is a group based project created by Kyle Condie, Macheya Steele, and Jason Adams.
 
-## - We created a location based searching application that uses OpenBreweryDB, Zomato, and OpenCageData  APIs to generate a list of restaurants, breweries, or both in your area.
+-This application allows the user to search based off their current location, or by entering a chosen location, and gives the option to see breweries, restaurants or both in the area chosen. The last five searched cities will appear below the search bar.
 
 **The Process:**
 
-- We created an idea for a design.
+- A mockup and user story was created to showcase our desired functionality, purpose and design. The remote repository, initial starting files and the HTML skeleton were created to get the project started. 
 
-- We created the basic starting functions to get location then do API searches based off of the location that was given.
+- The basic starting functions were created to get user location and an API search based off of the location that was given to provide restaurants and/or breweries. 
 
-- We created a skeleton HTML document to get styling started.
+- We then styled using CSS and Materialize library, and ensured the application was mobile responsive. 
 
-- We styled the page using the Materialize library.
+## Technologies Used
+- Languages/Frameworks: HTML, CSS, Materialize, JS
+- APIs: OpenBreweryDB, Zomato and OpenCageData
 
-- We created functions to generate new lists based on the results returned from the fetch requests, then added them to the page.
+### Follow link to explore the application:
 
-**Example of successful search:**
+- https://msteele77.github.io/Eats-n-such/
+
+
+### Application Preview:
+
+(Need to add a screenshot of completed styling of app)

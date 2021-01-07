@@ -8,7 +8,8 @@
     display: none;
 }
 
-body {
+html, body {
+    height:100%;
 
 }
 
@@ -17,7 +18,7 @@ header {
     position: relative;
 }
 
-.header-1 {
+/* .header-1 {
     font-weight: bold;
     font-size: 36px;
     color: #D58342; 
@@ -25,6 +26,12 @@ header {
     padding: 10px 10px 0px;
     position: absolute;
     bottom: 0;
+} */
+
+.nav-title {
+    font-weight: bold;
+    font-size: 36px;
+    color: #D58342; 
 }
 
 header nav ul li a {
@@ -52,17 +59,16 @@ header nav {
 .hero {
     background-image: url("../images/hero-image.jpg");
     background-size: cover;
-    height: 1000px;
+    height:fit-content;
+    min-height: 500px;
+    
 }
 
 .search-form {
     background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
-    width: 450px;
-    height: 500px;
-    position: absolute;
-    top: 200px;
-    left: 40px;
+    max-height: 700px;
+    /* position: relative; */
 }
 
 
@@ -97,10 +103,7 @@ button {
     background-color: white;
     margin: 0;
     border: none;
-
-    
 }
-
 
 h6 {
     color: white;
@@ -111,8 +114,7 @@ h6 {
     background-color: rgba(0, 0, 0, .7);
     border: 3px solid grey;
     color: white;
-    position: relative;
-    top: 32px;
+    /* position: relative; */
 
 }
 
